@@ -1,0 +1,88 @@
+{-# LANGUAGE RankNTypes #-} 
+module Lawproofs
+    where
+
+import Prelude hiding (length, (++))
+
+
+
+data Tree a = Leaf a
+              | Node (Tree a) (Tree a)
+
+-- definition 1
+size :: Tree a -> Int
+size (Leaf a) = 1
+size (Node l r) = size l + size r
+
+--definition 2
+flatten :: Tree a -> [a]
+flatten (Leaf a) =  [a]
+flatten (Node l r) = flatten l ++ flatten r
+
+--definition 3
+length :: [a] -> Int
+length [] = 0
+length (x:xs) = 1 + length xs
+
+--definition 4
+(++) :: [a] -> [a] -> [a]
+[]      ++ ys = ys
+(x:xs)  ++ ys = x : (xs ++ ys)
+
+
+
+-- Subtask 2.4.1 
+-- Prove the following property
+
+
+
+
+
+--proof
+{-we give numbers for the given  definitions to make it clear
+so by definition4 which is (++) first we apply these to the 
+two lists which gives us the the apennded list -}
+
+--first (xs ++ ys) returns the over all list of the two lists combined 
+-- by definition 4 (++)
+
+forall (xs :: [a]) (ys :: [a] . 
+length (xs ++ ys) = length xs + length ys
+
+xs ++ ys = xs ++ ys
+length (xs ++ ys) = length (xs ++ ys) 
+
+--aaplying inductive hypothesis on the right side equasion
+--we know that inductive hypothesis k*(y+n) = k*y + k*n
+
+
+ length (xs ++ ys) = length xs + length ys
+
+
+
+
+-- Subtask 2.4.2 
+-- Prove the following property
+
+forall (t :: Tree a) . length (flatten t) = size t
+
+--proof
+--for all type t which is a type of Tree a the length of its flatten 
+-- type has to return the size of that t 
+-- by definition 2 flatten tskes a type of Tree a to list 
+
+flatten :: t -> [t]
+size :: t -> Int
+
+length :: [t] -> Int
+
+length (flatten t) -> Int
+size t -> Int
+
+--therefore when applying both size and length to Tree type t we 
+--will get the same result
+
+length (flatten t) = size t 
+
+
+

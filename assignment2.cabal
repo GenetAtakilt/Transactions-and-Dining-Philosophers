@@ -1,0 +1,51 @@
+name:                assignment2
+version:             0.1.0.0
+author:              Group
+maintainer:          Group
+copyright:           (c) 2017 Group
+category:            Teaching
+build-type:          Simple
+extra-source-files:  README.md,LawProofs.txt
+cabal-version:       >=1.10
+
+library
+  exposed-modules:Unsafeio
+      ,Transaction
+      ,Lawproofs
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5 ,containers
+  default-language: Haskell2010
+
+  
+  
+executable Dining
+  main-is: Dining.hs
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+  default-language: Haskell2010
+  
+
+executable Dining2
+  main-is: Dining2.hs
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+  default-language: Haskell2010
+
+executable STM
+  main-is: STM.hs
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5,stm
+  default-language: Haskell2010
+ 
+
